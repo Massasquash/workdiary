@@ -8,3 +8,7 @@
 <div>
   <%= @diary.body %>
 </div>
+
+<div>
+  <span><%= link_to "delete", diary_path(@diary), method: :delete, data: { confirm: "このダイアリーを消して大丈夫？" } %></span>
+</div>

@@ -15,6 +15,7 @@
       <tr>
         <td><%= link_to diary.date, diary_path(diary) %></td>
         <td><%= diary.body %></td>
+        <td><%= link_to "delete", diary_path(diary), method: :delete, data: { confirm: "このダイアリーを消して大丈夫？" } %></td>
       </tr>
     <% end %>
   </table>
