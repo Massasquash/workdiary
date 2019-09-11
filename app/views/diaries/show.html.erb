@@ -1,2 +1,10 @@
-<h1>Diaries#show</h1>
-<p>Find me in app/views/diaries/show.html.erb</p>
+<h1><%= @diary.date %>のダイアリー</h1>
+
+<div class="navigation-space">
+  <hr>
+  <hr>
+</div>
+
+<div>
+  <%= @diary.body %>
+</div>
