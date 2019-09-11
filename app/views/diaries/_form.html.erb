@@ -1,9 +1,11 @@
-<%= form_for diary do |f| %>
+<%= form_with(model: diary, local: true) do |form| %>
+
   <label>日付</label>
-  <div><%= f.date_select :date, :use_month_numbers => true %></div>
+  <div><%= form.date_select :date, :use_month_numbers => true %></div>
   
   <label>内容</label>
-  <div><%= f.text_area :body %></div>
+  <div><%= form.text_area :body %></div>
   
-  <div><%= f.submit '登録' %></div>
+  <div><%= form.submit '登録' %></div>
+  
 <% end %>
