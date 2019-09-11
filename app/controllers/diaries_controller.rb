@@ -1,5 +1,6 @@
 class DiariesController < ApplicationController
   def new
+    @diary = Diary.new
   end
 
   def edit

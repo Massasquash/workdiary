@@ -1,2 +1,16 @@
-<h1>Diaries#new</h1>
-<p>Find me in app/views/diaries/new.html.erb</p>
+<h1>ダイアリーを作る</h1>
+
+<div class="navigation-space">
+  <hr>
+  <hr>
+</div>
+
+<%= form_for @diary do |f| %>
+  <label>日付</label>
+  <div><%= f.date_select :date, :use_month_numbers => true %></div>
+  
+  <label>内容</label>
+  <div><%= f.text_area :body %></div>
+  
+  <div><%= f.submit '登録' %></div>
+<% end %>
