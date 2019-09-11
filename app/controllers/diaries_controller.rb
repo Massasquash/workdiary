@@ -15,6 +15,15 @@ class DiariesController < ApplicationController
   def edit
     @diary = Diary.find params[:id]
   end
+  
+  def update
+    diary = Diary.find params[:id]
+    if diary.update(diary_params)
+      redirect_to diaries_path
+    else
+      render 'edit'
+    end
+  end
 
   def index
     @diaries = Diary.all.order(date: "DESC")
