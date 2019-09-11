@@ -5,12 +5,4 @@
   <hr>
 </div>
 
-<%= form_for @diary do |f| %>
-  <label>日付</label>
-  <div><%= f.date_select :date, :use_month_numbers => true %></div>
-  
-  <label>内容</label>
-  <div><%= f.text_area :body %></div>
-  
-  <div><%= f.submit '登録' %></div>
-<% end %>
+<%= render 'form', diary: @diary %>
