@@ -13,6 +13,7 @@ class DiariesController < ApplicationController
   end
 
   def edit
+    @diary = Diary.find params[:id]
   end
 
   def index
