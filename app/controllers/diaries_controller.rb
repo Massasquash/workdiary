@@ -26,7 +26,7 @@ class DiariesController < ApplicationController
   end
 
   def index
-    @diaries = Diary.all.order(date: "DESC")
+    @diaries = Diary.all.order(date: :desc)
   end
 
   def show
