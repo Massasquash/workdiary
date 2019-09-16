@@ -9,6 +9,21 @@
   <%= @diary.body %>
 </div>
 
+<br>
+
+<table>
+  <% @diary.works.each do |work| %>
+    <tr>
+      <td><%= work.category %></td>
+      <td><%= work.title %></td>
+      <td><%= work.body %></td>
+      <td><%= work.image %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
 <div>
   <span><%= link_to "edit", edit_diary_path(@diary) %></span>
   <span><%= link_to "delete", diary_path(@diary), method: :delete, data: { confirm: "このダイアリーを消して大丈夫？" } %></span>
