@@ -1,0 +1,15 @@
+<h1><%= @diary.date %>のダイアリー</h1>
+
+<div class="navigation-space">
+  <hr>
+  <hr>
+</div>
+
+<div>
+  <%= @diary.body %>
+</div>
+
+<div>
+  <span><%= link_to "edit", edit_diary_path(@diary) %></span>
+  <span><%= link_to "delete", diary_path(@diary), method: :delete, data: { confirm: "このダイアリーを消して大丈夫？" } %></span>
+</div>

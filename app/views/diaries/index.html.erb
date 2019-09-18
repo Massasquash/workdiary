@@ -1,0 +1,23 @@
+<h1>日誌</h1>
+
+<div class="navigation-space">
+  <hr>
+  <hr>
+</div>
+
+<div class="contents">
+  <table>
+    <tr>
+      <td>日付</td>
+      <td>内容</td>
+    </tr>
+    <% @diaries.each do |diary| %>
+      <tr>
+        <td><%= link_to diary.date, diary_path(diary) %></td>
+        <td><%= diary.body %></td>
+        <td><%= link_to "edit", edit_diary_path(diary) %></td>
+        <td><%= link_to "delete", diary_path(diary), method: :delete, data: { confirm: "このダイアリーを消して大丈夫？" } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
