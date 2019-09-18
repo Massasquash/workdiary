@@ -15,6 +15,12 @@ class WorksController < ApplicationController
     @work = @diary.works.find params[:id]
   end
   
+  def update
+    diary = Diary.find params[:diary_id]
+    diary.works.update(work_params)
+    redirect_to diary_path(diary)
+  end
+  
   def destroy
     diary = Diary.find params[:diary_id]
     work = diary.works.find params[:id]
