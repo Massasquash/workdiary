@@ -5,9 +5,13 @@ class WorksController < ApplicationController
   end
 
   def create
-    diary = Diary.find params[:diary_id]
-    diary.works.create(work_params)
-    redirect_to diary_path(diary)
+    @diary = Diary.find params[:diary_id]
+    @work = @diary.works.create(work_params)
+    if @work.save
+      redirect_to diary_path(@diary)
+    else
+      render 'new'
+    end
   end
   
   def edit
@@ -16,9 +20,13 @@ class WorksController < ApplicationController
   end
   
   def update
-    diary = Diary.find params[:diary_id]
-    diary.works.update(work_params)
-    redirect_to diary_path(diary)
+    @diary = Diary.find params[:diary_id]
+    @work = @diary.works.find params[:id]
+    if @work.update(work_params)
+      redirect_to diary_path(@diary)
+    else
+      render 'edit'
+    end
   end
   
   def destroy
