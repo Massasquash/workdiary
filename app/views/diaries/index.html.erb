@@ -15,8 +15,6 @@
       <tr>
         <td><%= link_to diary.date, diary_path(diary) %></td>
         <td><%= diary.body %></td>
-        <td><%= link_to "edit", edit_diary_path(diary) %></td>
-        <td><%= link_to "delete", diary_path(diary), method: :delete, data: { confirm: "このダイアリーを消して大丈夫？" } %></td>
         <td><%= link_to "ワークを追加", new_diary_work_path(diary.id) %></td>        
       </tr>
       <% diary.works.each do |work| %>
