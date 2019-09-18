@@ -10,9 +10,14 @@ class WorksController < ApplicationController
     redirect_to diary_path(@diary)
   end
   
+  def edit
+    @diary = Diary.find params[:diary_id]
+    @work = @diary.works.find params[:id]
+  end
+  
   def destroy
     @diary = Diary.find params[:diary_id]
-    @work = @diary.works. find params[:id]
+    @work = @diary.works.find params[:id]
     @work.destroy!
     redirect_to diary_path(@diary)
   end
