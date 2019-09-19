@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_114303) do
+ActiveRecord::Schema.define(version: 2019_09_16_034815) do
 
   create_table "diaries", force: :cascade do |t|
     t.date "date"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2019_09_16_114303) do
   end
 
   create_table "works", force: :cascade do |t|
-    t.date "date"
     t.string "category"
     t.string "title"
     t.text "body"

@@ -1,7 +1,7 @@
-<%= form_with(model: [@diary, @work], local: true) do |form| %>
+<%= form_with(model: [diary, work], local: true) do |form| %>
 
   <label>日付</label>
-  <div><%= form.date_select :date, :use_month_numbers => true, default: @diary.date %></div>
+  <div><%= diary.date %></div>
   
   <label>カテゴリ</label>
   <div><%= form.text_field :category %></div>
