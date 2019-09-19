@@ -1,12 +1,12 @@
 class WorksController < ApplicationController
   def new
     @diary = Diary.find params[:diary_id]
-    @work = Work.new
+    @work = @diary.works.build
   end
 
   def create
     @diary = Diary.find params[:diary_id]
-    @work = @diary.works.create(work_params)
+    @work = @diary.works.build(work_params)
     if @work.save
       redirect_to diary_path(@diary)
     else
