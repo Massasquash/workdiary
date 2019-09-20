@@ -17,7 +17,7 @@
         <td><%= diary.body %></td>
         <td><%= link_to "ワークを追加", new_diary_work_path(diary) %></td>        
       </tr>
-      <% diary.works.each do |work| %>
+      <% diary.works.includes(:diary).each do |work| %>
         <tr>
           <td><%= work.category %></td>
           <td><%= work.title %></td>
