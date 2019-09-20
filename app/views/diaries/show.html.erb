@@ -18,8 +18,8 @@
       <td><%= work.title %></td>
       <td><%= work.body %></td>
       <td><%= work.image %></td>
-      <td><%= link_to "edit", [:edit, work.diary, work] %></td>
-      <td><%= link_to "delete", [work.diary, work], method: :delete, data: {confirm: "このワークを消して大丈夫？"} %></td>
+      <td><%= link_to "edit", edit_diary_work_path(@diary, work) %></td>
+      <td><%= link_to "delete", diary_work_path(@diary, work), method: :delete, data: {confirm: "このワークを消して大丈夫？"} %></td>
     </tr>
   <% end %>
 </table>
