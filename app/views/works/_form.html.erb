@@ -1,0 +1,20 @@
+<%= form_with(model: [diary, work], local: true) do |form| %>
+
+  <label>日付</label>
+  <div><%= diary.date %></div>
+  
+  <label>カテゴリ</label>
+  <div><%= form.text_field :category %></div>
+  
+  <label>内容</label>
+  <div><%= form.text_field :title %></div>  
+
+  <label>詳細</label>
+  <div><%= form.text_area :body %></div> 
+  
+  <label>写真</label>
+  <div><%= form.text_field :picture %></div> 
+  
+  <div><%= form.submit '登録' %></div>
+  
+<% end %>
