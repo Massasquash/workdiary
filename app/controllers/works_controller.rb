@@ -2,6 +2,8 @@ class WorksController < ApplicationController
   def new
     @diary = Diary.find params[:diary_id]
     @work = @diary.works.build
+    @template = Template.new
+    @templates = Template.all
   end
 
   def create
