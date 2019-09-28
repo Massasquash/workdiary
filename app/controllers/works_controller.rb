@@ -2,6 +2,7 @@ class WorksController < ApplicationController
   def new
     @diary = Diary.find params[:diary_id]
     @work = @diary.works.build
+    # TODO　変数のつけ方を精査
     @template = Template.new
     @templates = Template.all
   end
