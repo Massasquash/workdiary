@@ -12,8 +12,8 @@
   <label>詳細</label>
   <div>
     <%= form_with(model: template, local: true) do |form| %>
-      <%= form.collection_select :name, templates, :id, :name %>
-      <%= link_to "新規テンプレート追加", new_template_path %>
+      <%= form.collection_select :name, templates, :id, :name, :include_blank => true %>
+      <%= link_to "新規テンプレート追加", new_template_path(diary) %>
     <% end %>
   </div>
 
