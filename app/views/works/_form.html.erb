@@ -11,13 +11,14 @@
 
   <label>詳細</label>
   <div>
-    <%= form_with(model: template, local: true) do |form| %>
-      <%= form.collection_select :name, templates, :id, :name, :include_blank => true %>
-      <%= link_to "新規テンプレート追加", new_template_path(diary) %>
+    <%= form_with(model: template, local: true) do |t_form| %>
+      <%= t_form.collection_select :name, templates, :id, :name, :include_blank => true %>
     <% end %>
+    
+    <%= link_to "新規テンプレート追加", new_template_path(diary) %>
+    
+    <%= render 'work_body', form: form %>
   </div>
-
-  <div><%= form.text_area :body %></div> 
   
   <label>写真</label>
   <div><%= form.text_field :picture %></div> 
