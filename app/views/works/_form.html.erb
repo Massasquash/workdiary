@@ -10,14 +10,16 @@
   <div><%= form.text_field :title %></div>  
 
   <label>詳細</label>
-  <div>
-    <%= form_with(model: template, local: true) do |t_form| %>
-      <%= t_form.collection_select :name, templates, :id, :name, :include_blank => true %>
-    <% end %>
-    
+  <div id="ChoseTemplate">
+    <%= collection_select(:template, :name, templates, :id, :name, {:include_blank => true},{class: 'ChoseTemplate', :onchange => "changeTemplate()"}) %>
+  </div>
+  
+    <%= link_to "挿入", templates_get_body_path(template_id), remote: true %>
     <%= link_to "新規テンプレート追加", new_template_path(diary) %>
-    
-    <%= render 'work_body', form: form %>
+
+    <div id="WorkBody">    
+      <%= render 'work_body', form: form %>
+    </div>
   </div>
   
   <label>写真</label>
@@ -26,3 +28,23 @@
   <div><%= form.submit '登録' %></div>
   
 <% end %>
+
+
+
+<!--onchangeメソッド-->
+<script>
+function changeTemplate(){
+  var template_id = $('ChoseTemplate').val();
+  
+  // var select = document.getElementById('template_id');
+  // var options = document.getElementById('template_id').options;
+  // var value = options.item(select.selectedIndex).value;
+  // var template_id = value
+  
+  // $ajax({
+  //   url: "/templates/get_body",
+  //   type: "GET",
+  //   data: template_id  = value
+  // })
+}
+</script>
