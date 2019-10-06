@@ -20,7 +20,9 @@ class TemplatesController < ApplicationController
   def get_body
     template = Template.find(params[:template_id])
     @template_body = template.body
-    format.js
+    respond_to do |format|
+      format.js
+    end
   end
   
   private

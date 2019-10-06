@@ -11,10 +11,18 @@
 
   <label>詳細</label>
   <div id="ChoseTemplate">
-    <%= collection_select(:template, :name, templates, :id, :name, {:include_blank => true},{class: 'ChoseTemplate', :onchange => "changeTemplate()"}) %>
+    
+      <%= collection_select(:template, :name, templates, :id, :name, {:include_blank => true},{class: 'ChoseTemplate', :onchange => "changeTemplate($(this).val())"}) %>
+      
+      <%=  %>
+      
+      <%#= button_to "Click", templates_get_body_path, method: :get %>
+      <%#= button_to "Click", templates_get_body_path %>
+      
+
   </div>
   
-    <%= link_to "挿入", templates_get_body_path(template_id), remote: true %>
+    <%= link_to "挿入", templates_get_body_path(template), remote: true %>
     <%= link_to "新規テンプレート追加", new_template_path(diary) %>
 
     <div id="WorkBody">    
@@ -29,22 +37,25 @@
   
 <% end %>
 
-
-
 <!--onchangeメソッド-->
 <script>
-function changeTemplate(){
-  var template_id = $('ChoseTemplate').val();
+function changeTemplate(val){
+  // var template_id = $('ChoseTemplate').val();
+  var template_id = val;
+  
+  // alert(template_id)
   
   // var select = document.getElementById('template_id');
   // var options = document.getElementById('template_id').options;
   // var value = options.item(select.selectedIndex).value;
   // var template_id = value
   
-  // $ajax({
-  //   url: "/templates/get_body",
-  //   type: "GET",
-  //   data: template_id  = value
-  // })
+  $.ajax({
+    url: "/templates/get_body",
+    type: "GET",
+    data: {
+      template_id: template_id
+    }
+  })
 }
 </script>
