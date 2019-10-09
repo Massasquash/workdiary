@@ -11,13 +11,13 @@
 
   <label>詳細</label>
   <div>
-    <%= form_with(model: template, local: true) do |t_form| %>
-      <%= t_form.collection_select :name, templates, :id, :name, :include_blank => true %>
-    <% end %>
+    <%= collection_select(:template, :name, templates, :id, :name, {:include_blank => true},{class: 'ChoseTemplate', :onchange => "changeTemplate($(this).val())"}) %>
     
     <%= link_to "新規テンプレート追加", new_template_path(diary) %>
     
-    <%= render 'work_body', form: form %>
+    <div id="WorkBody">
+      <%= render 'work_body', form: form %>
+    </div>
   </div>
   
   <label>写真</label>
@@ -26,3 +26,20 @@
   <div><%= form.submit '登録' %></div>
   
 <% end %>
+
+<!--onechangeメソッド-->
+<script>
+function changeTemplate(val){
+  var template_id = val;
+  
+  // alert(template_id)
+  
+  $.ajax({
+    url: "/templates/get_body",
+    type: "GET",
+    data: {
+      template_id: template_id
+    }
+  })
+}
+</script>

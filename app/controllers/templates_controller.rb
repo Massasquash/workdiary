@@ -17,6 +17,15 @@ class TemplatesController < ApplicationController
     end
   end
   
+  def get_body
+    template = Template.find(params[:template_id])
+    @template_body = template.body
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  
   private
   
   def template_params
