@@ -26,7 +26,6 @@ class TemplatesController < ApplicationController
     end
   end
   
-  
   private
   
   def template_params
