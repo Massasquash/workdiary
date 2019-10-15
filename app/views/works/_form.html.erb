@@ -9,16 +9,28 @@
   <label>内容</label>
   <div><%= form.text_field :title %></div>  
 
-  <label>詳細</label>
-  <div>
-    <%= collection_select(:template, :name, templates, :id, :name, {:include_blank => true},{class: 'ChoseTemplate', :onchange => "changeTemplate($(this).val())"}) %>
-    
-    <%= link_to "新規テンプレート追加", new_template_path(diary) %>
-    
-    <div id="WorkBody">
-      <%= render 'work_body', form: form %>
+  <% if local_assigns[:edit_flag].present? %>
+    <label>詳細</label>
+    <div><%= form.text_area :body, :size => "40x10" %></div>
+  <% else %>
+    <label>詳細</label>
+    <div>
+      <%= collection_select(:template, :name, templates, :id, :name, {:include_blank => true},{class: 'ChoseTemplate', :onchange => "changeTemplate($(this).val())"}) %>
+      <%= link_to "新規テンプレート追加", new_template_path(diary) %>
+      <div id="WorkBody">
+        <%= render 'work_body', form: form %>
+      </div>
     </div>
-  </div>
+
+
+  <% end %>
+
+
+  
+  
+  
+  
+
   
   <label>写真</label>
   <div><%= form.text_field :picture %></div> 
