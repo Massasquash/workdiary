@@ -8,13 +8,13 @@ class TemplatesController < ApplicationController
 
   def create
     @template = Template.new(template_params)
-    diary_id = session[:diary_id]
+    @diary_id = session[:diary_id]
     if @template.save
-      redirect_to new_diary_work_path(diary_id)
+      redirect_to new_diary_work_path(@diary_id)
       session[:diary_id] = nil
     else
-      # render 'new'
-      redirect_to new_template_path(diary_id)
+      render 'new', diary_id: @diary_id
+      # redirect_to new_template_path(diary_id)
     end
   end
   
