@@ -2,7 +2,6 @@ class WorksController < ApplicationController
   def new
     @diary = Diary.find params[:diary_id]
     @work = @diary.works.build
-    @template = Template.new
     @templates = Template.all
   end
 
@@ -19,7 +18,6 @@ class WorksController < ApplicationController
   def edit
     @diary = Diary.find params[:diary_id]
     @work = @diary.works.find params[:id]
-    @template = Template.new
     @templates = Template.all
   end
   
