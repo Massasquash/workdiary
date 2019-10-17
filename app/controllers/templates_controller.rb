@@ -14,7 +14,6 @@ class TemplatesController < ApplicationController
       session[:diary_id] = nil
     else
       render 'new', diary_id: @diary_id
-      # redirect_to new_template_path(diary_id)
     end
   end
   
