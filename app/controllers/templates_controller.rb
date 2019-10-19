@@ -1,10 +1,7 @@
 class TemplatesController < ApplicationController
-  
   def new
     @template = Template.new
-    params[:diary_id] = params[:format]
-    session[:diary_id] = params[:diary_id]
-    @diary_id = session[:diary_id]
+    @diary_id = session[:diary_id] = params[:diary_id]
   end
 
   def create
