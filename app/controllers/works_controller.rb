@@ -8,6 +8,7 @@ class WorksController < ApplicationController
   def create
     @diary = Diary.find params[:diary_id]
     @work = @diary.works.build(work_params)
+    @templates = Template.all
     if @work.save
       redirect_to diary_path(@diary)
     else
@@ -24,6 +25,7 @@ class WorksController < ApplicationController
   def update
     @diary = Diary.find params[:diary_id]
     @work = @diary.works.find params[:id]
+    @templates = Template.all
     if @work.update(work_params)
       redirect_to diary_path(@diary)
     else
