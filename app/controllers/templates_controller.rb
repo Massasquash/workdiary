@@ -2,7 +2,8 @@ class TemplatesController < ApplicationController
   
   def new
     @template = Template.new
-    session[:diary_id] = params[:format]
+    params[:diary_id] = params[:format]
+    session[:diary_id] = params[:diary_id]
     @diary_id = session[:diary_id]
   end
 
@@ -13,7 +14,7 @@ class TemplatesController < ApplicationController
       redirect_to new_diary_work_path(@diary_id)
       session[:diary_id] = nil
     else
-      render 'new', diary_id: @diary_id
+      render 'new'
     end
   end
   
