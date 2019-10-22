@@ -10,11 +10,23 @@
   <div><%= form.text_field :title %></div>  
 
   <label>詳細</label>
-  <div><%= form.text_area :body %></div> 
-  
+  <% if local_assigns[:edit_flag].present? %>
+    <div><%= form.text_area :body, :size => "40x10" %></div>
+  <% else %>
+    <div>
+      <%= collection_select(:template, :name, templates, :id, :name, {:include_blank => true},{class: 'ChoseTemplate', :onchange => "changeTemplate($(this).val())"}) %>
+      <%= link_to "新規テンプレート追加", new_template_path(diary_id: diary.id) %>
+      <div><%= render 'work_body', form: form %></div>
+    </div>
+  <% end %>
+
   <label>写真</label>
   <div><%= form.text_field :picture %></div> 
-  
-  <div><%= form.submit '登録' %></div>
+
+  <% if local_assigns[:edit_flag].present? %>
+    <div><%= form.submit '更新' %></div>
+  <% else %>
+    <div><%= form.submit '登録' %></div>
+  <% end %>
   
 <% end %>
