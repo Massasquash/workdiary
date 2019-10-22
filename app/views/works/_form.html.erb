@@ -16,7 +16,7 @@
     <div>
       <%= collection_select(:template, :name, templates, :id, :name, {:include_blank => true},{class: 'ChoseTemplate', :onchange => "changeTemplate($(this).val())"}) %>
       <%= link_to "新規テンプレート追加", new_template_path(diary_id: diary.id) %>
-      <div><%= render 'work_body', form: form, template_body: template_body %></div>
+      <div><%= render 'work_body', form: form %></div>
     </div>
   <% end %>
 
