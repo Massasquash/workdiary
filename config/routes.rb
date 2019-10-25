@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :diaries do
     resources :works, only: [:new, :create, :edit, :update, :destroy] do
-      resources :memos, only: [:create, :update, :destroy], shallow: true
+      resources :memos, only: [:new, :create, :update, :destroy], shallow: true
     end
   end
   
