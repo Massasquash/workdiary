@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :diaries do
-    resources :works, only: [:new, :create, :edit, :update, :destroy]
+    resources :works, only: [:new, :create, :edit, :update, :destroy] do
+      resources :memos, only: [:create, :update, :destroy], shallow: true
+    end
   end
   
   resources :templates, only: [:new, :create]
