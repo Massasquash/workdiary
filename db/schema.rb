@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_27_224254) do
+ActiveRecord::Schema.define(version: 2019_10_25_112524) do
 
   create_table "diaries", force: :cascade do |t|
     t.date "date"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 2019_09_27_224254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["date"], name: "index_diaries_on_date", unique: true
+  end
+
+  create_table "memos", force: :cascade do |t|
+    t.text "body"
+    t.integer "work_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_id"], name: "index_memos_on_work_id"
   end
 
   create_table "templates", force: :cascade do |t|
