@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :diaries do
-    resources :works, only: [:new, :create, :edit, :update, :destroy] do
-      resources :memos, only: [:new, :create, :update, :destroy], shallow: true
-    end
+    resources :works, only: [:new, :create, :edit, :update, :destroy]
+  end
+  resources :works, only: [] do
+    resource :memo, only: [:new, :create, :update, :destroy]
   end
   
   resources :templates, only: [:new, :create]
@@ -10,5 +11,4 @@ Rails.application.routes.draw do
   get 'templates/get_body'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'diaries#index'
-  
 end

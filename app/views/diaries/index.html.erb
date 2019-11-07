@@ -25,7 +25,7 @@
           <td><%= work.image %></td>
           <td><%= link_to "edit", edit_diary_work_path(diary, work) %></td>
           <td><%= link_to "delete", diary_work_path(diary, work), method: :delete, data: {confirm: "このワークを消して大丈夫？"} %></td>              
-          <td><%= link_to "＋メモを追加", new_diary_work_memo_path(diary, work) %></td>
+          <td><%= link_to "＋メモを追加", new_work_memo_path(work) %></td>
         </tr>
       <% end %>
     <% end %>
