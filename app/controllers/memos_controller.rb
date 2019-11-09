@@ -23,6 +23,17 @@ class MemosController < ApplicationController
     @memo = @work.memo
   end
   
+  def update
+    @work = Work.find params[:work_id]
+    @diary = Diary.find @work.diary_id
+    @memo = @work.memo
+    if @memo.update(memo_params)
+      redirect_to diary_path(@diary)
+    else
+      render 'edit'
+    end
+  end
+  
 
   private
 
