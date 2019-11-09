@@ -16,6 +16,13 @@ class MemosController < ApplicationController
       render 'new'
     end
   end
+  
+  def edit
+    @work = Work.find params[:work_id]
+    @diary = Diary.find @work.diary_id
+    @memo = @work.memo
+  end
+  
 
   private
 

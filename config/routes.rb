@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :works, only: [:new, :create, :edit, :update, :destroy]
   end
   resources :works, only: [] do
-    resource :memo, only: [:new, :create, :update, :destroy]
+    resource :memo, only: [:new, :create, :edit, :update, :destroy]
   end
   
   resources :templates, only: [:new, :create]
