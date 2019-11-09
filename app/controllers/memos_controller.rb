@@ -1,14 +1,14 @@
 class MemosController < ApplicationController
 
   def new
-    @diary = Diary.find params[:diary_id]
-    @work = @diary.works.find params[:work_id]
+    @work = Work.find params[:work_id]
+    @diary = Diary.find @work.diary_id
     @memo = @work.build_memo
   end
   
   def create
-    @diary = Diary.find params[:diary_id]
-    @work = @diary.works.find params[:work_id]
+    @work = Work.find params[:work_id]
+    @diary = Diary.find @work.diary_id
     @memo = @work.create_memo(memo_params)
     if @memo.save
       redirect_to diary_path(@diary)
