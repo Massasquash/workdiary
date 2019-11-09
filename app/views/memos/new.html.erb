@@ -1,15 +1,10 @@
 <h1>メモを追加</h1>
 
-<div><%= @diary.date %></div>
-<div>
-  <span><%= @work.category %></span>
-  <span><%= @work.title %></span>
+<div class="navigation-space">
+  <hr>
+  <hr>
 </div>
-<div><%= @work.body %></div>
 
-<div>
-  <%= form_with(model: [@work, @memo], url: work_memo_path, local: true) do |form| %>
-    <div><%= form.text_area :body %></div>
-    <div><%= form.submit %></div>
-  <% end %>
-</div>
+<%= render 'error_message', memo: @memo %>
+
+<%= render 'form', diary: @diary, work: @work, memo: @memo %>
