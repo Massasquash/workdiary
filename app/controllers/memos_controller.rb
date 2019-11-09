@@ -34,6 +34,14 @@ class MemosController < ApplicationController
     end
   end
   
+  def destroy
+    work = Work.find params[:work_id]
+    diary = Diary.find work.diary_id
+    memo = work.memo
+    memo.destroy!
+    redirect_to diary_path(diary)
+  end
+
 
   private
 
