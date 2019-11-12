@@ -33,6 +33,8 @@
         <td><%= work.memo&.body %></td>
         <td><%= link_to "edit", edit_work_memo_path(work) %></td>
         <td><%= link_to "delete", work_memo_path(work), method: :delete, data: {confirm: "このメモを消して大丈夫？"} %></td>
+      <% else %>
+        <td><%= link_to "＋メモを追加", new_work_memo_path(work) %><td>
       <% end %>
     </tr>
   <% end %>
