@@ -4,7 +4,10 @@
   <div><%= diary.date %></div>
   
   <label>カテゴリ</label>
-  <div><%= form.text_field :category %></div>
+  <div>
+    <%= form.text_field :category %>
+    <%= link_to "新規カテゴリ追加", new_category_path(diary_id: diary.id) %>
+    </div>
   
   <label>内容</label>
   <div><%= form.text_field :title %></div>  
