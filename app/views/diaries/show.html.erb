@@ -12,6 +12,15 @@
 <br>
 
 <table>
+  <tr>
+    <td>カテゴリ</td>
+    <td>内容</td>
+    <td>詳細</td>
+    <td>画像</td>
+    <td></td>
+    <td></td>
+    <td>メモ</td>
+  </tr>
   <% @diary.works.each do |work| %>
     <tr>
       <td><%= work.category %></td>
@@ -20,6 +29,13 @@
       <td><%= work.image %></td>
       <td><%= link_to "edit", edit_diary_work_path(@diary, work) %></td>
       <td><%= link_to "delete", diary_work_path(@diary, work), method: :delete, data: {confirm: "このワークを消して大丈夫？"} %></td>
+      <% if work.memo.present? %>
+        <td><%= work.memo&.body %></td>
+        <td><%= link_to "edit", edit_work_memo_path(work) %></td>
+        <td><%= link_to "delete", work_memo_path(work), method: :delete, data: {confirm: "このメモを消して大丈夫？"} %></td>
+      <% else %>
+        <td><%= link_to "＋メモを追加", new_work_memo_path(work) %><td>
+      <% end %>
     </tr>
   <% end %>
 </table>

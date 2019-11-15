@@ -1,0 +1,5 @@
+<% if posted_val.errors.any? %>
+  <%= posted_val.errors.full_messages.each do |msg| %>
+    <div><%= msg %></div>
+  <% end %>
+<% end %>
