@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_005602) do
+ActiveRecord::Schema.define(version: 2019_11_15_012356) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "work_id"
+    t.index ["work_id"], name: "index_categories_on_work_id"
   end
 
   create_table "diaries", force: :cascade do |t|
@@ -49,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_11_15_005602) do
     t.integer "diary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_works_on_category_id"
     t.index ["diary_id"], name: "index_works_on_diary_id"
   end
 
