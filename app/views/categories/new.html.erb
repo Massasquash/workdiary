@@ -1,0 +1,15 @@
+<h1>カテゴリーを作る</h1>
+
+<div class="navigation-space">
+  <hr>
+  <hr>
+</div>
+
+<%= form_with(model: @category, local: true) do |form| %>
+  
+  <label>カテゴリー名</label>
+  <div><%= form.text_field :name %></div>
+  
+  <div><%= form.submit '登録' %></div>
+
+<% end %>
