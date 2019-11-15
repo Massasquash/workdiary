@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :works, only: [] do
     resource :memo, only: [:new, :create, :edit, :update, :destroy]
   end
-  
+  resources :categories, only: [:new, :create]
   resources :templates, only: [:new, :create]
   
   get 'templates/get_body'
