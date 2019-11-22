@@ -19,7 +19,7 @@
       </tr>
       <% diary.works.each do |work| %>
         <tr>
-          <td><%= work.category %></td>
+          <td><%= work.category.name %></td>
           <td><%= work.title %></td>
           <td><%= work.body %></td>
           <td><%= work.image %></td>
