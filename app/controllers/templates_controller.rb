@@ -32,6 +32,12 @@ class TemplatesController < ApplicationController
     end
   end
   
+  def destroy
+    template = Template.find params[:id]
+    template.destroy!
+    redirect_to templates_path
+  end
+  
   def get_body
     template = Template.find(params[:template_id])
     @template_body = template.body
