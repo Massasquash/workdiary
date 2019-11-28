@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_112524) do
+ActiveRecord::Schema.define(version: 2019_11_22_075110) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "diaries", force: :cascade do |t|
     t.date "date"
@@ -36,13 +42,14 @@ ActiveRecord::Schema.define(version: 2019_10_25_112524) do
   end
 
   create_table "works", force: :cascade do |t|
-    t.string "category"
     t.string "title"
     t.text "body"
     t.string "image"
     t.integer "diary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_works_on_category_id"
     t.index ["diary_id"], name: "index_works_on_diary_id"
   end
 

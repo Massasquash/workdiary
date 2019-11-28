@@ -1,0 +1,19 @@
+<h1>カテゴリーを作る</h1>
+
+<div class="navigation-space">
+  <hr>
+  <hr>
+</div>
+
+<%= render 'shared/error_message', posted_val: @category %>
+
+<%= form_with(model: @category, local: true) do |form| %>
+  
+  <label>カテゴリー名</label>
+  <div><%= form.text_field :name %></div>
+  
+  <div><%= form.submit '登録' %></div>
+  
+  <div><%= link_to "ワーク入力に戻る", new_diary_work_path(@diary_id) %></div>
+
+<% end %>
