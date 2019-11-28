@@ -1,14 +1,5 @@
 <h1>テンプレート編集</h1>
 
-<%= form_with(model: @template, local: true) do |form| %>
+<%= render 'shared/error_message', posted_val: @template %>
 
-  <label>名前</label>
-  <div><%= form.text_field :name %></div>
-  
-  <label>テンプレート内容</label>
-  <div><%= form.text_area :body %></div>
-  
-  <div><%= form.submit '登録' %></div>
-  
-  <div><%= link_to "テンプレート一覧に戻る", templates_path %></div>
-<% end %>
+<%= render 'form', template: @template, diary_id: @diary_id, edit_flag: true %>

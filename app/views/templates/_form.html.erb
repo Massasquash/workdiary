@@ -1,0 +1,17 @@
+<%= form_with(model: template, local: true) do |form| %>
+
+  <label>名前</label>
+  <div><%= form.text_field :name %></div>
+  
+  <label>テンプレート内容</label>
+  <div><%= form.text_area :body %></div>
+  
+  <% if local_assigns[:edit_flag].present? %>
+    <div><%= form.submit '更新' %></div>
+    <div><%= link_to "テンプレート一覧に戻る", templates_path %></div>
+  <% else %>
+    <div><%= form.submit '登録' %></div>
+    <div><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id) %></div>   
+  <% end %>
+
+<% end %>

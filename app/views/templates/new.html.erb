@@ -2,15 +2,4 @@
 
 <%= render 'shared/error_message', posted_val: @template %>
 
-<%= form_with(model: @template, local: true) do |form| %>
-
-  <label>名前</label>
-  <div><%= form.text_field :name %></div>
-  
-  <label>テンプレート内容</label>
-  <div><%= form.text_area :body %></div>
-  
-  <div><%= form.submit '登録' %></div>
-  
-  <div><%= link_to "ワーク入力に戻る", new_diary_work_path(@diary_id) %></div>
-<% end %>
+<%= render 'form', template: @template, diary_id: @diary_id %>

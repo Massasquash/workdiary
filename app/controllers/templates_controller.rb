@@ -33,7 +33,7 @@ class TemplatesController < ApplicationController
   end
   
   def destroy
-    template = Template.find params[:id]
+    template = Template.find(params[:id])
     template.destroy!
     redirect_to templates_path
   end
