@@ -19,6 +19,19 @@ class TemplatesController < ApplicationController
     @templates = Template.all
   end
   
+  def edit
+    @template = Template.find(params[:id])
+  end
+  
+  def update
+    @template = Template.find(params[:id])
+    if @template.update(template_params)
+      redirect_to templates_path
+    else
+      render 'edit'
+    end
+  end
+  
   def get_body
     template = Template.find(params[:template_id])
     @template_body = template.body

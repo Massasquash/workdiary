@@ -15,6 +15,8 @@
       <tr>
         <td><%= template.name %></td>
         <td><%= template.body %></td>
+        <td><%= link_to "edit", edit_template_path(template) %></td>
+        <td><%= link_to "delete", template_path(template), method: :delete, data: {confirm: "このテンプレートを消して大丈夫？"} %></td>
       </tr>
     <% end %>
   </table>  
