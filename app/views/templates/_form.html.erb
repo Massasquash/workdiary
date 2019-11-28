@@ -11,7 +11,11 @@
     <div><%= link_to "テンプレート一覧に戻る", templates_path %></div>
   <% else %>
     <div><%= form.submit '登録' %></div>
-    <div><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id) %></div>   
+    <% if diary_id.present? %>
+      <div><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id) %></div>
+    <% else %>
+      <div><%= link_to "テンプレート一覧に戻る", templates_path %></div>
+    <% end %>
   <% end %>
 
 <% end %>
