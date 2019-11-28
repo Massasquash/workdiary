@@ -15,6 +15,10 @@ class TemplatesController < ApplicationController
     end
   end
   
+  def index
+    @templates = Template.all
+  end
+  
   def get_body
     template = Template.find(params[:template_id])
     @template_body = template.body

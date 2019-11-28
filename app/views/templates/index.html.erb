@@ -1,0 +1,21 @@
+<h1>テンプレート一覧</h1>
+
+<div class="navigation-space">
+  <hr>
+  <hr>
+</div>
+
+<div>
+  <table>
+    <tr>
+      <td>テンプレート名</td>
+      <td>テンプレート内容</td>
+    </tr>
+    <% @templates.each do |template| %>
+      <tr>
+        <td><%= template.name %></td>
+        <td><%= template.body %></td>
+      </tr>
+    <% end %>
+  </table>  
+</div>
