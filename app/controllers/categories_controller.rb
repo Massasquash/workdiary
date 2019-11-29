@@ -8,8 +8,12 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @diary_id = session[:diary_id]
     if @category.save
-      redirect_to new_diary_work_path(@diary_id)
-      session[:diary_id] = nil
+      if @diary_id.present?
+        redirect_to new_diary_work_path(@diary_id)
+        session[:diary_id] = nil
+      else
+        redirect_to categories_path
+      end
     else 
       render 'new'
     end
