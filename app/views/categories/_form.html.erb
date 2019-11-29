@@ -1,0 +1,14 @@
+<%= form_with(model: category, local: true) do |form| %>
+  
+  <label>カテゴリー名</label>
+  <div><%= form.text_field :name %></div>
+  
+  <% if local_assigns[:edit_flag] %>
+    <div><%= form.submit '更新' %></div>
+    <div><%= link_to "カテゴリ一覧に戻る", categories_path %></div>  
+  <% else %>
+    <div><%= form.submit '登録' %></div>
+    <div><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id) %></div>
+  <% end %>
+
+<% end %>

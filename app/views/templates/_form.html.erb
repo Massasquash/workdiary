@@ -6,7 +6,7 @@
   <label>テンプレート内容</label>
   <div><%= form.text_area :body %></div>
   
-  <% if local_assigns[:edit_flag].present? %>
+  <% if local_assigns[:edit_flag] %>
     <div><%= form.submit '更新' %></div>
     <div><%= link_to "テンプレート一覧に戻る", templates_path %></div>
   <% else %>

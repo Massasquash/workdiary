@@ -6,14 +6,4 @@
 </div>
 
 <%= render 'shared/error_message', posted_val: @category %>
-
-<%= form_with(model: @category, local: true) do |form| %>
-  
-  <label>カテゴリー名</label>
-  <div><%= form.text_field :name %></div>
-  
-  <div><%= form.submit '登録' %></div>
-  
-  <div><%= link_to "カテゴリ一覧に戻る", categories_path %></div>
-
-<% end %>
+<%= render 'form', category: @category, diary_id: @diary_id, edit_flag: true %>
