@@ -16,7 +16,8 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= link_to "edit", edit_category_path(category) %></td>
-        <td><%#= link_to "delete", template_path(template), method: :delete, data: {confirm: "このテンプレートを消して大丈夫？"} %></td>
+        <!--categoryに紐付くworksがない場合のみそのcategoryを削除できる-->
+        <td><%= link_to_if(category.works.presence == nil, "delete", category_path(category), method: :delete, data: {confirm: "このカテゴリを消して大丈夫？"}) {} %></td>
       </tr>
     <% end %>
   </table>  
