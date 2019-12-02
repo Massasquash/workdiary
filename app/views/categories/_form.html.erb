@@ -8,7 +8,7 @@
     <div><%= link_to "カテゴリ一覧に戻る", categories_path %></div>  
   <% else %>
     <div><%= form.submit '登録' %></div>
-    <!--work入力画面からのカテゴリ登録かどうかで分岐　works/newではdiary_idに値が入っている-->
+    <%# work入力画面からのカテゴリ登録か設定画面からのカテゴリ登録かで分岐　works/newではdiary_idに値が入っている %>
     <% if diary_id.present? %>
       <div><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id) %></div>
     <% else %>
