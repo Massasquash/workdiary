@@ -38,8 +38,12 @@ class CategoriesController < ApplicationController
   
   def destroy
     category = Category.find params[:id]
-    category.destroy!
-    redirect_to categories_path
+    if category.works.presence == nil
+      category.destroy!
+      redirect_to categories_path
+    else
+      render `index`
+    end
   end
 
   private

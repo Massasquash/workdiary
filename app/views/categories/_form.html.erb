@@ -3,7 +3,7 @@
   <label>カテゴリー名</label>
   <div><%= form.text_field :name %></div>
   
-  <% if local_assigns[:edit_flag] %>
+  <% if form.object.persisted? %>
     <div><%= form.submit '更新' %></div>
     <div><%= link_to "カテゴリ一覧に戻る", categories_path %></div>  
   <% else %>
@@ -14,7 +14,6 @@
     <% else %>
       <div><%= link_to "カテゴリ一覧に戻る", categories_path %></div>
     <% end %>
-
   <% end %>
 
 <% end %>
