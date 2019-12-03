@@ -26,7 +26,7 @@
   <label>写真</label>
   <div><%= form.text_field :picture %></div> 
 
-  <% if local_assigns[:edit_flag].present? %>
+  <% if form.object.persisted? %>
     <div><%= form.submit '更新' %></div>
   <% else %>
     <div><%= form.submit '登録' %></div>
