@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
       category.destroy!
       redirect_to categories_path
     else
-      render `index`
+      render 'index'
     end
   end
 
