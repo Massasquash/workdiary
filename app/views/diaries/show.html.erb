@@ -24,7 +24,7 @@
   <% @diary.works.each do |work| %>
     <tr>
       <td>
-        <% if work.category != nil %>
+        <% if work.category.present? %>
           <%= work.category.name %>
         <% end %>
       </td>
