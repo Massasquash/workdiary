@@ -1,6 +1,6 @@
 <div><%= work.diary.date %></div>
 <div>
-  <span><%= work.category %></span>
+  <span><%= work.category.name %></span>
   <span><%= work.title %></span>
 </div>
 <div><%= work.body %></div>
@@ -8,6 +8,10 @@
 <div>
   <%= form_with(model: [work, memo], url: work_memo_path, local: true) do |form| %>
     <div><%= form.text_area :body %></div>
-    <div><%= form.submit %></div>
+    <% if form.object.persisted? %>
+      <div><%= form.submit '更新'  %></div>
+    <% else %>
+      <div><%= form.submit '登録'  %></div>
+    <% end %>
   <% end %>
 </div>

@@ -13,7 +13,7 @@
   <div><%= form.text_field :title %></div>  
 
   <label>詳細</label>
-  <% if local_assigns[:edit_flag].present? %>
+  <% if form.object.persisted? %>
     <div><%= form.text_area :body, :size => "40x10" %></div>
   <% else %>
     <div>
@@ -26,7 +26,7 @@
   <label>写真</label>
   <div><%= form.text_field :picture %></div> 
 
-  <% if local_assigns[:edit_flag].present? %>
+  <% if form.object.persisted? %>
     <div><%= form.submit '更新' %></div>
   <% else %>
     <div><%= form.submit '登録' %></div>

@@ -8,11 +8,38 @@ class TemplatesController < ApplicationController
     @template = Template.new(template_params)
     @diary_id = session[:diary_id]
     if @template.save
-      redirect_to new_diary_work_path(@diary_id)
-      session[:diary_id] = nil
+      if @diary_id.present?
+        redirect_to new_diary_work_path(@diary_id)
+        session[:diary_id] = nil
+      else
+        redirect_to templates_path
+      end
     else
       render 'new'
     end
+  end
+  
+  def index
+    @templates = Template.all
+  end
+  
+  def edit
+    @template = Template.find(params[:id])
+  end
+  
+  def update
+    @template = Template.find(params[:id])
+    if @template.update(template_params)
+      redirect_to templates_path
+    else
+      render 'edit'
+    end
+  end
+  
+  def destroy
+    template = Template.find(params[:id])
+    template.destroy!
+    redirect_to templates_path
   end
   
   def get_body

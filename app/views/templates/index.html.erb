@@ -1,0 +1,25 @@
+<h1>テンプレート一覧</h1>
+
+<div class="navigation-space">
+  <hr>
+  <hr>
+</div>
+
+<%= link_to "新規テンプレートを作る", new_template_path %>
+
+<div>
+  <table>
+    <tr>
+      <td>テンプレート名</td>
+      <td>テンプレート内容</td>
+    </tr>
+    <% @templates.each do |template| %>
+      <tr>
+        <td><%= template.name %></td>
+        <td><%= template.body %></td>
+        <td><%= link_to "edit", edit_template_path(template) %></td>
+        <td><%= link_to "delete", template_path(template), method: :delete, data: {confirm: "このテンプレートを消して大丈夫？"} %></td>
+      </tr>
+    <% end %>
+  </table>  
+</div>

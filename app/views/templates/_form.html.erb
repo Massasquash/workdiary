@@ -1,0 +1,22 @@
+<%= form_with(model: template, local: true) do |form| %>
+
+  <label>名前</label>
+  <div><%= form.text_field :name %></div>
+  
+  <label>テンプレート内容</label>
+  <div><%= form.text_area :body %></div>
+  
+  <% if form.object.persisted? %>
+    <div><%= form.submit '更新' %></div>
+    <div><%= link_to "テンプレート一覧に戻る", templates_path %></div>
+  <% else %>
+    <div><%= form.submit '登録' %></div>
+    <%#　work入力画面からのカテゴリ登録か設定画面からのカテゴリ登録かで分岐　works/newではdiary_idに値が入っている %>
+    <% if diary_id.present? %>
+      <div><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id) %></div>
+    <% else %>
+      <div><%= link_to "テンプレート一覧に戻る", templates_path %></div>
+    <% end %>
+  <% end %>
+
+<% end %>

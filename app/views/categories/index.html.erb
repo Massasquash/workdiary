@@ -1,0 +1,23 @@
+<h1>カテゴリ一覧</h1>
+
+<div class="navigation-space">
+  <hr>
+  <hr>
+</div>
+
+<%= link_to "新規カテゴリを作る", new_category_path %>
+
+<div>
+  <table>
+    <tr>
+      <td>カテゴリ名</td>
+    </tr>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= link_to "edit", edit_category_path(category) %></td>
+        <td><%= link_to "delete", category_path(category), method: :delete, data: {confirm: "このカテゴリを消して大丈夫？"} %></td>
+      </tr>
+    <% end %>
+  </table>  
+</div>
