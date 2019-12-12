@@ -1,12 +1,8 @@
 <div class="ml-2">
   <h1><%= @diary.date %> Diary</h1>
-
 </div>
 
-
-<div class="navigation-space">
-  <hr>
-</div>
+<hr>
 
 <div class="ml-2", style="overflow: hidden;">
   <div class="mx-1", style:"float: left;">
@@ -37,7 +33,7 @@
     
     <div class="mx-1" style="overflow: hidden;">
       <div style="float: left;">
-        <i class="fa fa-sticky-note mx-1"></i>
+        <i class="fa fa-comments mx-1"></i>
         <%= work.memo&.body %>
         <%= link_to "", edit_work_memo_path(work), class: "fa fa-edit fa-1x", style:"color: black;" %>
         <%= link_to "", work_memo_path(work), method: :delete, data: {confirm: "このメモを消して大丈夫？"}, class: "fa fa-trash fa-1x text-dark" %>

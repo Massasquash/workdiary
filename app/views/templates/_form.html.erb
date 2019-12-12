@@ -1,22 +1,32 @@
 <%= form_with(model: template, local: true) do |form| %>
 
-  <label>名前</label>
-  <div><%= form.text_field :name %></div>
+  <div class="pb-2">
+    <label class="font-weight-bold">名前</label>
+    <div><%= form.text_field :name %></div>
+  </div>
   
-  <label>テンプレート内容</label>
-  <div><%= form.text_area :body %></div>
+  <div class="pb-2">
+    <label class="font-weight-bold">テンプレート内容</label>
+    <div><%= form.text_area :body %></div>
+  </div>
   
-  <% if form.object.persisted? %>
-    <div><%= form.submit '更新' %></div>
-    <div><%= link_to "テンプレート一覧に戻る", templates_path %></div>
-  <% else %>
-    <div><%= form.submit '登録' %></div>
-    <%#　work入力画面からのカテゴリ登録か設定画面からのカテゴリ登録かで分岐　works/newではdiary_idに値が入っている %>
-    <% if diary_id.present? %>
-      <div><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id) %></div>
+  <div class="pb-2">
+    <% if form.object.persisted? %>
+      <div class="mx-2" tyle="overflow: hidden;">
+        <div style="float: left;"><%= form.submit '更新', class:"btn btn-dark" %></div>
+        <div class="text-right"><%= link_to "テンプレート一覧に戻る", templates_path, class:"btn btn-dark" %></div>
+      </div>
     <% else %>
-      <div><%= link_to "テンプレート一覧に戻る", templates_path %></div>
+      <div class="mx-2" tyle="overflow: hidden;">
+        <div style="float: left;"><%= form.submit '登録', class:"btn btn-dark" %></div>
+        <%#　work入力画面からのカテゴリ登録か設定画面からのカテゴリ登録かで分岐　works/newではdiary_idに値が入っている %>
+        <% if diary_id.present? %>
+          <div class="text-right"><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id), class:"btn btn-dark" %></div>
+        <% else %>
+          <div class="text-right"><%= link_to "テンプレート一覧に戻る", templates_path, class:"btn btn-dark" %></div>
+        <% end %>
+      </div>
     <% end %>
-  <% end %>
+  </div>
 
 <% end %>

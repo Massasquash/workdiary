@@ -5,9 +5,7 @@
   </div>
 </div>
 
-<div class="navigation-space">
-  <hr>
-</div>
+<hr>
 
 <div class="content-wrapper mx-2">
   <% @diaries.each do |diary| %>
@@ -24,8 +22,7 @@
             <div class="col-8 mx-1">
               <div><i class="fa fa-tag mx-1"></i><%= work.category&.name %></div>
               <div><i class="fa fa-briefcase mx-1"></i><%= work.title %></div>
-              <div><i class="fa fa-clipboard mx-1"></i></div>
-              <div><%= simple_format(work.body) %></div>
+              <div><i class="fa fa-clipboard mx-1"></i><%= work.body.truncate(15) %></div>
             </div>
             <div class="col-4">
               <%= work.image %>
@@ -33,8 +30,8 @@
           </div>
           <div class="text-right mr-1">
             <%= link_to_if(work.memo.nil?, "Add Memo", new_work_memo_path(work), class: "btn btn-dark btn-sm mb-2 mr-2") {} %>
-            <%= link_to "", edit_diary_work_path(diary, work), class: "fa fa-edit fa-2x" %>
-            <%= link_to "", diary_work_path(diary, work), method: :delete, data: {confirm: "このワークを消して大丈夫？"}, class: "fa fa-trash fa-2x" %>
+            <%= link_to "", edit_diary_work_path(diary, work), class: "fa fa-edit fa-2x text-dark" %>
+            <%= link_to "", diary_work_path(diary, work), method: :delete, data: {confirm: "このワークを消して大丈夫？"}, class: "fa fa-trash fa-2x text-dark" %>
           </div>
         </div>
       <% end %>
