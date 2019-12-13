@@ -1,48 +1,49 @@
-<h1><%= @diary.date %>のダイアリー</h1>
-
-<div class="navigation-space">
-  <hr>
-  <hr>
+<div class="ml-2">
+  <h1><%= @diary.date %> Diary</h1>
 </div>
 
-<div>
-  <%= @diary.body %>
+<hr>
+
+<div class="ml-2", style="overflow: hidden;">
+  <div class="mx-1", style:"float: left;">
+    <%= @diary.body %>
+  </div>
+  <div>
+    <%= link_to "Add Work", new_diary_work_path(@diary), class:"btn btn-dark pl-2 py-1 btn-sm" %>
+  </div>
+  <div class="text-right  mr-1">
+    <%= link_to "", edit_diary_path(@diary), class: "fa fa-edit fa-2x text-dark" %>
+    <%= link_to "", diary_path(@diary), method: :delete, data: { confirm: "このダイアリーを消して大丈夫？" }, class: "fa fa-trash fa-2x text-dark" %>
+  </div>
 </div>
 
-<br>
-
-<table>
-  <tr>
-    <td>カテゴリ</td>
-    <td>内容</td>
-    <td>詳細</td>
-    <td>画像</td>
-    <td></td>
-    <td></td>
-    <td>メモ</td>
-  </tr>
-  <% @diary.works.each do |work| %>
-    <tr>
-      <td><%= work.category&.name %></td>
-      <td><%= work.title %></td>
-      <td><%= work.body %></td>
-      <td><%= work.image %></td>
-      <td><%= link_to "edit", edit_diary_work_path(@diary, work) %></td>
-      <td><%= link_to "delete", diary_work_path(@diary, work), method: :delete, data: {confirm: "このワークを消して大丈夫？"} %></td>
-      <% if work.memo.present? %>
-        <td><%= work.memo&.body %></td>
-        <td><%= link_to "edit", edit_work_memo_path(work) %></td>
-        <td><%= link_to "delete", work_memo_path(work), method: :delete, data: {confirm: "このメモを消して大丈夫？"} %></td>
-      <% else %>
-        <td><%= link_to "＋メモを追加", new_work_memo_path(work) %><td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
-
-<br>
-
-<div>
-  <span><%= link_to "edit", edit_diary_path(@diary) %></span>
-  <span><%= link_to "delete", diary_path(@diary), method: :delete, data: { confirm: "このダイアリーを消して大丈夫？" } %></span>
-</div>
+<% @diary.works.each do |work| %>
+  <div class="work-container border rounded border-primary ml-2 my-1">
+    <div class="row">
+      <div class="col-8 mx-1">
+        <div><i class="fa fa-tag mx-1"></i><%= work.category&.name %></div>
+        <div><i class="fa fa-briefcase mx-1"></i><%= work.title %></div>
+        <div><i class="fa fa-clipboard mx-1"></i></div>
+        <div class="ml-1"><%= simple_format(work.body) %></div>
+      </div>
+      <div class="col-4">
+        <%= work.image %>
+      </div>
+    </div>
+    
+    <div class="mx-1" style="overflow: hidden;">
+      <div style="float: left;">
+        <i class="fa fa-comments mx-1"></i>
+        <%= work.memo&.body %>
+        <%= link_to "", edit_work_memo_path(work), class: "fa fa-edit fa-1x", style:"color: black;" %>
+        <%= link_to "", work_memo_path(work), method: :delete, data: {confirm: "このメモを消して大丈夫？"}, class: "fa fa-trash fa-1x text-dark" %>
+      </div>
+      <div class="text-right mr-1">
+        <%= link_to_if(work.memo.nil?, "Add Memo", new_work_memo_path(work), class: "btn btn-dark btn-sm mb-2 mr-2") {} %>
+        <%= link_to "", edit_diary_work_path(@diary, work), class: "fa fa-edit fa-2x text-dark" %>
+        <%= link_to "", diary_work_path(@diary, work), method: :delete, data: {confirm: "このワークを消して大丈夫？"}, class: "fa fa-trash fa-2x text-dark" %>
+      </div>
+    </div>
+    
+  </div>
+<% end %>

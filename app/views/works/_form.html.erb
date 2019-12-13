@@ -1,35 +1,47 @@
 <%= form_with(model: [diary, work], local: true) do |form| %>
 
-  <label>日付</label>
-  <div><%= diary.date %></div>
+  <div class="pb-2">
+    <label class="font-weight-bold">日付</label>
+    <div class="ml-2"><%= diary.date %></div>
+  </div>
+
+  <div class="pb-2">  
+    <label class="font-weight-bold">カテゴリ</label>
+    <div class="ml-2">
+      <%= form.collection_select(:category_id, categories, :id, :name) %>
+      <%= link_to "＋New Category", new_category_path(diary_id: diary.id), class:"btn btn-dark btn-sm" %>
+    </div>
+  </div>
   
-  <label>カテゴリ</label>
+  <div class="pb-2">  
+    <label class="font-weight-bold">作業名</label>
+    <div class="ml-2"><%= form.text_field :title %></div>
+  </div>
+  
+  <div class="pb-2">  
+    <label class="font-weight-bold">作業内容</label>
+    <% if form.object.persisted? %>
+      <div><%= form.text_area :body, size: "30x5" %></div>
+    <% else %>
+      <div class="ml-2">
+        <%= collection_select(:template, :name, templates, :id, :name, {:prompt => "↓Chose Template↓"},{class: 'ChoseTemplate', :onchange => "changeTemplate($(this).val())"}) %>
+        <%= link_to "＋New Template", new_template_path(diary_id: diary.id), class:"btn btn-dark btn-sm" %>
+        <div><%= render 'work_body', form: form %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="pb-2">
+    <label class="font-weight-bold">写真</label>
+    <div><%= form.text_field :picture %></div>
+  </div>
+
   <div>
-    <%= form.collection_select(:category_id, categories, :id, :name) %>
-    <%= link_to "新規カテゴリ追加", new_category_path(diary_id: diary.id) %>
-    </div>
-  
-  <label>内容</label>
-  <div><%= form.text_field :title %></div>  
-
-  <label>詳細</label>
-  <% if form.object.persisted? %>
-    <div><%= form.text_area :body, :size => "40x10" %></div>
-  <% else %>
-    <div>
-      <%= collection_select(:template, :name, templates, :id, :name, {:include_blank => true},{class: 'ChoseTemplate', :onchange => "changeTemplate($(this).val())"}) %>
-      <%= link_to "新規テンプレート追加", new_template_path(diary_id: diary.id) %>
-      <div><%= render 'work_body', form: form %></div>
-    </div>
-  <% end %>
-
-  <label>写真</label>
-  <div><%= form.text_field :picture %></div> 
-
-  <% if form.object.persisted? %>
-    <div><%= form.submit '更新' %></div>
-  <% else %>
-    <div><%= form.submit '登録' %></div>
-  <% end %>
+    <% if form.object.persisted? %>
+      <div class="ml-2"><%= form.submit '更新', class:"btn btn-dark" %></div>
+    <% else %>
+      <div class="ml-2"><%= form.submit '登録', class:"btn btn-dark" %></div>
+    <% end %>
+  </div>
   
 <% end %>

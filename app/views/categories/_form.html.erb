@@ -1,19 +1,25 @@
 <%= form_with(model: category, local: true) do |form| %>
   
-  <label>カテゴリー名</label>
-  <div><%= form.text_field :name %></div>
+  <div class="pb-2">
+    <label class="font-weight-bold">カテゴリー名</label>
+    <div><%= form.text_field :name %></div>
+  </div>
   
   <% if form.object.persisted? %>
-    <div><%= form.submit '更新' %></div>
-    <div><%= link_to "カテゴリ一覧に戻る", categories_path %></div>  
+    <div class="mx-2" tyle="overflow: hidden;">
+      <div style="float: left;"><%= form.submit '更新', class:"btn btn-dark" %></div>
+      <div class="text-right"><%= link_to "カテゴリ一覧に戻る", categories_path, class:"btn btn-dark" %></div>
+    </div>
   <% else %>
-    <div><%= form.submit '登録' %></div>
-    <%# work入力画面からのカテゴリ登録か設定画面からのカテゴリ登録かで分岐　works/newではdiary_idに値が入っている %>
-    <% if diary_id.present? %>
-      <div><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id) %></div>
-    <% else %>
-      <div><%= link_to "カテゴリ一覧に戻る", categories_path %></div>
-    <% end %>
+    <div class="mx-2" tyle="overflow: hidden;">
+      <div style="float: left;"><%= form.submit '登録', class:"btn btn-dark" %></div>
+      <%# work入力画面からのカテゴリ登録か設定画面からのカテゴリ登録かで分岐　works/newではdiary_idに値が入っている %>
+      <% if diary_id.present? %>
+        <div class="text-right"><%= link_to "ワーク入力に戻る", new_diary_work_path(diary_id), class:"btn btn-dark" %></div>
+      <% else %>
+        <div class="text-right"><%= link_to "カテゴリ一覧に戻る", categories_path, class:"btn btn-dark" %></div>
+      <% end %>
+    </div>
   <% end %>
 
 <% end %>

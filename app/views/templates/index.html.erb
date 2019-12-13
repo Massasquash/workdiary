@@ -1,25 +1,19 @@
-<h1>テンプレート一覧</h1>
-
-<div class="navigation-space">
-  <hr>
-  <hr>
+<div class="ml-2">
+  <h1>Templates</h1>
+  <%= link_to "Make New Category", new_template_path, class:"btn btn-dark btn-sm" %>
 </div>
 
-<%= link_to "新規テンプレートを作る", new_template_path %>
+<hr>
 
-<div>
-  <table>
-    <tr>
-      <td>テンプレート名</td>
-      <td>テンプレート内容</td>
-    </tr>
-    <% @templates.each do |template| %>
-      <tr>
-        <td><%= template.name %></td>
-        <td><%= template.body %></td>
-        <td><%= link_to "edit", edit_template_path(template) %></td>
-        <td><%= link_to "delete", template_path(template), method: :delete, data: {confirm: "このテンプレートを消して大丈夫？"} %></td>
-      </tr>
-    <% end %>
-  </table>  
+<div class="mx-2 pb-4">
+  <% @templates.each do |template| %>
+    <div class="pb-1">
+      <span class="px-2"><i class="fa fa-sticky-note mx-1"></i><%= template.name %></span>
+      <span><%= link_to "", edit_template_path(template), class: "fa fa-edit fa-1x text-dark" %></span>
+      <span><%= link_to "", template_path(template), method: :delete, data: {confirm: "このテンプレートを消して大丈夫？"}, class: "fa fa-trash fa-1x text-dark" %></span>
+    </div>
+    <div class="px-2 pl-4">
+      <%= simple_format(template.body) %></td>
+    </div>
+  <% end %>
 </div>

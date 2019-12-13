@@ -1,10 +1,10 @@
-<h1>ダイアリーを編集する</h1>
-
-<div class="navigation-space">
-  <hr>
-  <hr>
+<div class="ml-2">
+  <h1>Edit Diary</h1>
 </div>
 
-<%= render 'shared/error_message', posted_val: @diary %>
+<hr>
 
-<%= render 'form', diary: @diary %>
+<div class="mx-2">
+  <%= render 'shared/error_message', posted_val: @diary %>
+  <%= render 'form', diary: @diary %>
+</div>
