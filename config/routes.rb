@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :diaries do
     resources :works, only: [:new, :create, :edit, :update, :destroy]
   end

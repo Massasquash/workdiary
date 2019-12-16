@@ -1,4 +1,6 @@
 class DiariesController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @diary = Diary.new
   end
