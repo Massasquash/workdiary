@@ -1,6 +1,4 @@
 class DiariesController < ApplicationController
-  before_action :authenticate_user!
-  
   def new
     @diary = Diary.new
   end
@@ -46,5 +44,4 @@ class DiariesController < ApplicationController
   def diary_params
     params.require(:diary).permit(:date, :body)
   end
-
 end
