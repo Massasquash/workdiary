@@ -1,10 +1,17 @@
-<div><%= work.diary.date %></div>
-<div>
-  <span><%= work.category&.name %></span>
-  <span><%= work.title %></span>
+<div class="pb-2">
+  <label class="font-weight-bold">日付</label>
+  <div class="ml-2"><%= work.diary.date %></div>
 </div>
-<div><%= work.body %></div>
-
+  
+<div class="pb-2">
+  <label class="font-weight-bold">ワーク</label>
+  <div>
+    <span><i class="fa fa-tag mx-1"></i><%= work.category&.name %></span>
+    <span><i class="fa fa-briefcase mx-1"></i><%= work.title %></span>
+    <p><i class="fa fa-clipboard mx-1"></i><%= work.body %></p>
+  </div>
+</div>
+  
 <div>
   <%= form_with(model: [work, memo], url: work_memo_path, local: true) do |form| %>
     <div><%= form.text_area :body %></div>
