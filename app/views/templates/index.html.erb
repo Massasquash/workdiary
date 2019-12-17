@@ -1,11 +1,11 @@
-<div class="ml-2">
+<div>
   <h1>Templates</h1>
   <%= link_to "Make New Category", new_template_path, class:"btn btn-dark btn-sm" %>
 </div>
 
 <hr>
 
-<div class="mx-2 pb-4">
+<div class="mx-1 pb-4">
   <% @templates.each do |template| %>
     <div class="pb-1">
       <span class="px-2"><i class="fa fa-sticky-note mx-1"></i><%= template.name %></span>

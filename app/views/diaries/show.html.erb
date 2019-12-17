@@ -1,10 +1,10 @@
-<div class="ml-2">
+<div>
   <h1><%= @diary.date %> Diary</h1>
 </div>
 
 <hr>
 
-<div class="ml-2", style="overflow: hidden;">
+<div style="overflow: hidden;">
   <div class="mx-1", style:"float: left;">
     <%= @diary.body %>
   </div>
@@ -18,7 +18,7 @@
 </div>
 
 <% @diary.works.each do |work| %>
-  <div class="work-container border rounded border-primary ml-2 my-1">
+  <div class="work-container border rounded border-primary mx-2 my-1">
     <div class="row">
       <div class="col-8 mx-1">
         <div><i class="fa fa-tag mx-1"></i><%= work.category&.name %></div>

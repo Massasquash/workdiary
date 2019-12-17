@@ -1,10 +1,10 @@
-<h1>メモを編集</h1>
-
-<div class="navigation-space">
-  <hr>
-  <hr>
+<div>
+  <h1>Edit Memo</h1>
 </div>
 
-<%= render 'shared/error_message', posted_val: @memo %>
+<hr>
 
-<%= render 'form', diary: @diary, work: @work, memo: @memo %>
+<div>
+  <%= render 'shared/error_message', posted_val: @memo %>
+  <%= render 'form', diary: @diary, work: @work, memo: @memo %>
+</div>
