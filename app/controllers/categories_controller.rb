@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   
   def create
     @category = Category.new(category_params)
+    @category.user = current_user
     @diary_id = session[:diary_id]
     if @category.save
       if @diary_id.present?
@@ -20,7 +21,7 @@ class CategoriesController < ApplicationController
   end
   
   def index
-    @categories = Category.all
+    @categories = current_user.categories
   end
   
   def edit

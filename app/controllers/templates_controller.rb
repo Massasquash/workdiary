@@ -6,6 +6,7 @@ class TemplatesController < ApplicationController
 
   def create
     @template = Template.new(template_params)
+    @template.user = current_user
     @diary_id = session[:diary_id]
     if @template.save
       if @diary_id.present?
@@ -20,7 +21,7 @@ class TemplatesController < ApplicationController
   end
   
   def index
-    @templates = Template.all
+    @templates = current_user.templates
   end
   
   def edit

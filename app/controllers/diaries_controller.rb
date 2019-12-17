@@ -5,6 +5,7 @@ class DiariesController < ApplicationController
   
   def create
     @diary = Diary.new(diary_params)
+    @diary.user = current_user
     if @diary.save
       redirect_to diaries_path
     else
@@ -26,7 +27,7 @@ class DiariesController < ApplicationController
   end
 
   def index
-    @diaries = Diary.all.includes(:works).order(date: :desc)
+    @diaries = current_user.diaries.includes(:works).order(date: :desc)
   end
 
   def show
