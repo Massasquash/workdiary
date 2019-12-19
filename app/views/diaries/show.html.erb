@@ -1,5 +1,5 @@
 <div>
-  <h1><%= @diary.date %> Diary</h1>
+  <h1><%= @diary.date %> の日記</h1>
 </div>
 
 <hr>
@@ -9,7 +9,7 @@
     <%= @diary.body %>
   </div>
   <div>
-    <%= link_to "Add Work", new_diary_work_path(@diary), class:"btn btn-dark pl-2 py-1 btn-sm" %>
+    <%= link_to "ワーク追加", new_diary_work_path(@diary), class:"btn btn-dark pl-2 py-1 btn-sm" %>
   </div>
   <div class="text-right  mr-1">
     <%= link_to "", edit_diary_path(@diary), class: "fa fa-edit fa-2x text-dark" %>
@@ -33,13 +33,15 @@
     
     <div class="mx-1" style="overflow: hidden;">
       <div style="float: left;">
-        <i class="fa fa-comments mx-1"></i>
-        <%= work.memo&.body %>
-        <%= link_to "", edit_work_memo_path(work), class: "fa fa-edit fa-1x", style:"color: black;" %>
-        <%= link_to "", work_memo_path(work), method: :delete, data: {confirm: "このメモを消して大丈夫？"}, class: "fa fa-trash fa-1x text-dark" %>
+        <% if work.memo.present? %>
+          <i class="fa fa-comments mx-1"></i>
+          <%= work.memo&.body %>
+          <%= link_to "", edit_work_memo_path(work), class: "fa fa-edit fa-1x", style:"color: black;" %>
+          <%= link_to "", work_memo_path(work), method: :delete, data: {confirm: "このメモを消して大丈夫？"}, class: "fa fa-trash fa-1x text-dark" %>
+        <% end %>
       </div>
       <div class="text-right mr-1">
-        <%= link_to_if(work.memo.nil?, "Add Memo", new_work_memo_path(work), class: "btn btn-dark btn-sm mb-2 mr-2") {} %>
+        <%= link_to_if(work.memo.nil?, "メモする", new_work_memo_path(work), class: "btn btn-dark btn-sm mb-2 mr-2") {} %>
         <%= link_to "", edit_diary_work_path(@diary, work), class: "fa fa-edit fa-2x text-dark" %>
         <%= link_to "", diary_work_path(@diary, work), method: :delete, data: {confirm: "このワークを消して大丈夫？"}, class: "fa fa-trash fa-2x text-dark" %>
       </div>

@@ -1,5 +1,5 @@
 <div>
-  <h1>Account</h1>
+  <h1><i class="fa fa-user nav-link"></i>アカウント</h1>
 </div>
 
 <hr>
@@ -10,7 +10,7 @@
   </div>
   <div>
     <% if user_signed_in? %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-dark btn-sm" %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-dark btn-sm" %>
     <% end %>
   </div>
 </div>

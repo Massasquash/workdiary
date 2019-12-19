@@ -9,7 +9,7 @@
     <label class="font-weight-bold">カテゴリ</label>
     <div class="ml-2">
       <%= form.collection_select(:category_id, categories, :id, :name) %>
-      <%= link_to "＋New Category", new_category_path(diary_id: diary.id), class:"btn btn-dark btn-sm" %>
+      <%= link_to "＋カテゴリ追加", new_category_path(diary_id: diary.id), class:"btn btn-dark btn-sm" %>
     </div>
   </div>
   
@@ -25,7 +25,7 @@
     <% else %>
       <div class="ml-2">
         <%= collection_select(:template, :name, templates, :id, :name, {:prompt => "↓Chose Template↓"},{class: 'ChoseTemplate', :onchange => "changeTemplate($(this).val())"}) %>
-        <%= link_to "＋New Template", new_template_path(diary_id: diary.id), class:"btn btn-dark btn-sm" %>
+        <%= link_to "＋テンプレート追加", new_template_path(diary_id: diary.id), class:"btn btn-dark btn-sm" %>
         <div><%= render 'work_body', form: form %></div>
       </div>
     <% end %>
