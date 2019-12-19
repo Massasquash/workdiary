@@ -1,4 +1,7 @@
 class WorksController < ApplicationController
+  def index
+  end
+
   def new
     @diary = Diary.find params[:diary_id]
     @work = @diary.works.build

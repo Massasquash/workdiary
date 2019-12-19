@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
+  get 'serchs/index'
   get 'accounts/index'
   devise_for :users
   resources :diaries do
     resources :works, only: [:new, :create, :edit, :update, :destroy]
   end
-  resources :works, only: [] do
+  resources :works, only: [:index] do
     resource :memo, only: [:new, :create, :edit, :update, :destroy]
   end
   resources :categories, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :templates, only: [:new, :create, :index, :edit, :update, :destroy]
+  resources :serchs, only: [:index]
   resources :settings, only: [:index]
   resources :accounts, only: [:index]
   
