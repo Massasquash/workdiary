@@ -5,7 +5,12 @@
 <hr>
 
 <div>
-  <% if user_signed_in? %>
-    <%= link_to "logout", destroy_user_session_path, method: :delete %>
-  <% end %>
+  <div class="mb-2">
+    <%= @user.email %> としてログイン中
+  </div>
+  <div>
+    <% if user_signed_in? %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-dark btn-sm" %>
+    <% end %>
+  </div>
 </div>

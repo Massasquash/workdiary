@@ -16,9 +16,9 @@
   <%= form_with(model: [work, memo], url: work_memo_path, local: true) do |form| %>
     <div><%= form.text_area :body %></div>
     <% if form.object.persisted? %>
-      <div><%= form.submit '更新'  %></div>
+      <div class="ml-2"><%= form.submit '更新', class:"btn btn-dark" %></div>
     <% else %>
-      <div><%= form.submit '登録'  %></div>
+      <div class="ml-2"><%= form.submit '登録', class:"btn btn-dark" %></div>
     <% end %>
   <% end %>
 </div>
