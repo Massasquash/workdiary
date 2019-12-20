@@ -28,7 +28,7 @@ Template.create!(
 
 p "create test Category"
 Category.create!(
-  name: '実装状況',
+  name: 'Read Me',
   user_id: 1
 )
 
