@@ -1,0 +1,7 @@
+<% if posted_val.errors.any? %>
+  <div class="alert alert-warning" role="alert">
+    <%= posted_val.errors.full_messages.each do |msg| %>
+      <div><%= msg %></div>
+    <% end %>
+  </div>
+<% end %> 

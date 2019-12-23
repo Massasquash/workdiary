@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      work: ワーク
+    attributes:
+      diary:
+        date: 日付
+        body: 内容
+      work:
+        title: 作業名
+        body: 作業内容
+        image: 写真
+      memo:
+        body: メモ
+      category:
+        name: カテゴリ名
+      template:
+        name: テンプレート名
+        body: テンプレート内容
+        
