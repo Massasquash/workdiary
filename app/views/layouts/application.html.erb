@@ -26,8 +26,8 @@
   <body>
     <%= render 'shared/header' %>
     <div class="mx-2">
+      <%= breadcrumbs pretext: "", separator: " ＞ " %>
       <%= yield %>
     </div>
-    
   </body>
 </html>

@@ -1,3 +1,5 @@
+<% breadcrumb :memo_new, @work %>
+
 <div>
   <h1>メモを追加する</h1>
 </div>
@@ -6,5 +8,5 @@
 
 <div>
   <%= render 'shared/error_messages', posted_val: @memo %>
-  <%= render 'form', diary: @diary, work: @work, memo: @memo %>
+  <%= render 'form', work: @work, memo: @memo %>
 </div>

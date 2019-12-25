@@ -28,7 +28,6 @@ class DiariesController < ApplicationController
 
   def index
     @diaries = current_user.diaries.includes(:works).order(date: :desc)
-    # raise params.inspect
   end
 
   def show
